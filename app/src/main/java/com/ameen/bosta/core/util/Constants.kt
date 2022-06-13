@@ -1,6 +1,7 @@
-package com.ameen.bosta.common
+package com.ameen.bosta.core.util
 
 const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+const val TIME_OUT = 15L
 
 //EndPoints Reference.
 object ApiEndPoints {

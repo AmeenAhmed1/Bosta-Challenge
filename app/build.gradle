@@ -19,7 +19,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -35,6 +34,9 @@ android {
     }
     kapt {
         correctErrorTypes true
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
