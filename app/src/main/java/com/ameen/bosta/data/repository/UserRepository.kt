@@ -1,6 +1,6 @@
 package com.ameen.bosta.data.repository
 
-import com.ameen.bosta.core.ResultWrapper
+import com.ameen.bosta.core.wrapper.ResultWrapper
 import com.ameen.bosta.data.mapper.UserDataMapper
 import com.ameen.bosta.data.remote.UsersApi
 import com.ameen.bosta.domain.model.Album

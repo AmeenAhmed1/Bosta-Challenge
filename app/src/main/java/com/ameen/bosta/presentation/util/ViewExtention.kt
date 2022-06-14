@@ -1,4 +1,4 @@
-package com.ameen.bosta.core.util
+package com.ameen.bosta.presentation.util
 
 import android.view.View
 

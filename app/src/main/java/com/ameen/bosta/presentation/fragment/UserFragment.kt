@@ -10,9 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ameen.bosta.core.ResultWrapper
-import com.ameen.bosta.core.util.hide
-import com.ameen.bosta.core.util.show
+import com.ameen.bosta.core.wrapper.ResultWrapper
+import com.ameen.bosta.presentation.util.hide
+import com.ameen.bosta.presentation.util.show
 import com.ameen.bosta.databinding.FragmentUserBinding
 import com.ameen.bosta.domain.model.Album
 import com.ameen.bosta.domain.model.User

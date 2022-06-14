@@ -2,7 +2,7 @@ package com.ameen.bosta.presentation.fragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ameen.bosta.core.ResultWrapper
+import com.ameen.bosta.core.wrapper.ResultWrapper
 import com.ameen.bosta.domain.model.Album
 import com.ameen.bosta.domain.model.User
 import com.ameen.bosta.domain.usecase.GetUserAlbumsUseCase
