@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Bosta</string>
+    <string name="profile_head_text">Profile</string>
+    <string name="user_name">User name</string>
+    <string name="albums_head_text">My Albums</string>
+    <string name="search_in_images_hint">Search in images..</string>
+    <string name="image_content_description">ImageDescription</string>
+    <string name="no_images_hint">Can`t find images with \"%1$s\"</string>
 </resources>
