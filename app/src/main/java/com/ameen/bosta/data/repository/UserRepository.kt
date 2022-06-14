@@ -45,7 +45,4 @@ class UserRepository @Inject constructor(
         }
     }
 
-    override fun getAlbumPhotos(albumId: String) {
-        TODO("Not yet implemented")
-    }
 }

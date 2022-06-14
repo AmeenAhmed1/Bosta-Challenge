@@ -18,8 +18,4 @@ interface UsersApi {
         @Query("userId") userId: Int
     ): Response<List<AlbumResponse>>
 
-    @GET(ApiEndPoints.ALBUM_PHOTOS_END_POINT)
-    suspend fun getAlbumPhotos(
-        @Query("albumId") albumId: String
-    ): Response<PhotoResponse>
 }

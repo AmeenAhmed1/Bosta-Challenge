@@ -1,4 +1,4 @@
-package com.ameen.bosta.presentation.fragment
+package com.ameen.bosta.presentation.fragment.userProfile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

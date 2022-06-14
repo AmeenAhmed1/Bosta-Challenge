@@ -1,27 +1,29 @@
-package com.ameen.bosta.presentation.fragment
+package com.ameen.bosta.presentation.fragment.userProfile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ameen.bosta.core.wrapper.ResultWrapper
-import com.ameen.bosta.presentation.util.hide
-import com.ameen.bosta.presentation.util.show
 import com.ameen.bosta.databinding.FragmentUserBinding
 import com.ameen.bosta.domain.model.Album
 import com.ameen.bosta.domain.model.User
 import com.ameen.bosta.presentation.adapter.UserAlbumsAdapter
+import com.ameen.bosta.presentation.listener.AlbumClickListener
+import com.ameen.bosta.presentation.util.hide
+import com.ameen.bosta.presentation.util.show
+import com.ameen.bosta.presentation.util.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class UserFragment : Fragment() {
+class UserFragment : Fragment(), AlbumClickListener {
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentUserBinding.inflate(layoutInflater)
@@ -53,7 +55,7 @@ class UserFragment : Fragment() {
                     is ResultWrapper.Success -> initViews(it.value)
                     is ResultWrapper.Error -> {
                         binding.progressBar.hide()
-                        Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                        requireContext().showToast(it.error)
                     }
                 }
             }
@@ -67,7 +69,7 @@ class UserFragment : Fragment() {
                     is ResultWrapper.Success -> initRecycler(it.value)
                     is ResultWrapper.Error -> {
                         binding.progressBar.hide()
-                        Toast.makeText(requireContext(), it.error, Toast.LENGTH_SHORT).show()
+                        requireContext().showToast(it.error)
                     }
                 }
             }
@@ -86,7 +88,7 @@ class UserFragment : Fragment() {
 
         if (!this::recAdapter.isInitialized) {
 
-            recAdapter = UserAlbumsAdapter()
+            recAdapter = UserAlbumsAdapter(this)
             recAdapter.diff.submitList(albums)
 
             binding.albumsRecycler.apply {
@@ -101,10 +103,11 @@ class UserFragment : Fragment() {
                     DividerItemDecoration.VERTICAL
                 )
             )
-
-            recAdapter.onItemClicked {
-                TODO("Selected Item Go To Details.")
-            }
         }
+    }
+
+    override fun onAlbumClicked(albumData: Album) {
+        val action = UserFragmentDirections.actionUserFragmentToAlbumPhotosFragment(albumData)
+        findNavController().navigate(action)
     }
 }

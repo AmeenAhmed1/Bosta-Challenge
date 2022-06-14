@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.ameen.bosta.presentation.fragment.UserFragment"
+        android:name="com.ameen.bosta.presentation.fragment.userProfile.UserFragment"
         android:label="UserFragment"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_albumPhotosFragment"
+            app:destination="@id/albumPhotosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumPhotosFragment"
+        android:name="com.ameen.bosta.presentation.fragment.albumPhotos.AlbumPhotosFragment"
+        android:label="AlbumPhotosFragment"
+        tools:layout="@layout/fragment_album_photos" >
+        <argument
+            android:name="albumData"
+            app:argType="com.ameen.bosta.domain.model.Album" />
+    </fragment>
 </navigation>

@@ -7,5 +7,4 @@ import com.ameen.bosta.domain.model.User
 interface IUserRepository {
     suspend fun getUser(): ResultWrapper<User>
     suspend fun getUserAlbums(userId: Int): ResultWrapper<List<Album>>
-    fun getAlbumPhotos(albumId: String)
 }
