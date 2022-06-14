@@ -18,9 +18,21 @@
         android:id="@+id/albumPhotosFragment"
         android:name="com.ameen.bosta.presentation.fragment.albumPhotos.AlbumPhotosFragment"
         android:label="AlbumPhotosFragment"
-        tools:layout="@layout/fragment_album_photos" >
+        tools:layout="@layout/fragment_album_photos">
         <argument
             android:name="albumData"
             app:argType="com.ameen.bosta.domain.model.Album" />
+        <action
+            android:id="@+id/action_albumPhotosFragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailsFragment"
+        android:name="com.ameen.bosta.presentation.fragment.photoDetails.PhotoDetailsFragment"
+        android:label="PhotoDetailsFragment"
+        tools:layout="@layout/fragment_image_viewer">
+        <argument
+            android:name="selectedPhotoData"
+            app:argType="com.ameen.bosta.domain.model.Photo" />
     </fragment>
 </navigation>

@@ -8,6 +8,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ameen.bosta.R
@@ -16,6 +17,7 @@ import com.ameen.bosta.core.wrapper.ResultWrapper
 import com.ameen.bosta.databinding.FragmentAlbumPhotosBinding
 import com.ameen.bosta.domain.model.Photo
 import com.ameen.bosta.presentation.adapter.AlbumPhotosAdapter
+import com.ameen.bosta.presentation.listener.PhotoClickListener
 import com.ameen.bosta.presentation.util.hide
 import com.ameen.bosta.presentation.util.show
 import com.ameen.bosta.presentation.util.showToast
@@ -23,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
-class AlbumPhotosFragment : Fragment() {
+class AlbumPhotosFragment : Fragment(), PhotoClickListener {
 
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentAlbumPhotosBinding.inflate(layoutInflater)
@@ -82,7 +84,7 @@ class AlbumPhotosFragment : Fragment() {
 
         if (!this::recAdapter.isInitialized) {
 
-            recAdapter = AlbumPhotosAdapter()
+            recAdapter = AlbumPhotosAdapter(this)
             recAdapter.diff.submitList(photosList)
 
             binding.albumPhotosRecycler.apply {
@@ -114,5 +116,11 @@ class AlbumPhotosFragment : Fragment() {
             } else
                 recAdapter.diff.submitList(currentPhotosList)
         }
+    }
+
+    override fun onPhotoSelectedListener(photoData: Photo) {
+        val action =
+            AlbumPhotosFragmentDirections.actionAlbumPhotosFragmentToPhotoDetailsFragment(photoData)
+        findNavController().navigate(action)
     }
 }
