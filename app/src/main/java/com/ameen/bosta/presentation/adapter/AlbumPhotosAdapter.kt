@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.ameen.bosta.databinding.ItemPhotoBinding
-import com.ameen.bosta.domain.model.Photo
+import com.ameen.bosta.presentation.listener.PhotoClickListener
 import com.ameen.bosta.presentation.util.loadImageFromUrl
 
-class AlbumPhotosAdapter :
-    RecyclerView.Adapter<AlbumPhotosAdapter.MyViewHolder>() {
+class AlbumPhotosAdapter(
+    private val photoClickListener: PhotoClickListener
+) : RecyclerView.Adapter<AlbumPhotosAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: ItemPhotoBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -26,12 +27,11 @@ class AlbumPhotosAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentPhoto = diff.currentList[position]
         holder.binding.albumImage.loadImageFromUrl(currentPhoto.photoUrl)
+
+        holder.binding.albumImage.setOnClickListener {
+            photoClickListener.onPhotoSelectedListener(currentPhoto)
+        }
     }
 
     override fun getItemCount(): Int = diff.currentList.size
-
-    private var onItemClickListener: ((Photo) -> Unit)? = null
-    fun onItemClicked(listener: (Photo) -> Unit) {
-        onItemClickListener = listener
-    }
 }

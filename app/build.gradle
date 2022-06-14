@@ -77,4 +77,8 @@ dependencies {
     // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+
+    // Image Viewer
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
 }
