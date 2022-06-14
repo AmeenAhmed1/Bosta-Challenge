@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/userFragment">
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.ameen.bosta.presentation.fragment.userProfile.UserFragment"
+        android:label="UserFragment"
+        tools:layout="@layout/fragment_user">
+        <action
+            android:id="@+id/action_userFragment_to_albumPhotosFragment"
+            app:destination="@id/albumPhotosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumPhotosFragment"
+        android:name="com.ameen.bosta.presentation.fragment.albumPhotos.AlbumPhotosFragment"
+        android:label="AlbumPhotosFragment"
+        tools:layout="@layout/fragment_album_photos">
+        <argument
+            android:name="albumData"
+            app:argType="com.ameen.bosta.domain.model.Album" />
+        <action
+            android:id="@+id/action_albumPhotosFragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailsFragment"
+        android:name="com.ameen.bosta.presentation.fragment.photoDetails.PhotoDetailsFragment"
+        android:label="PhotoDetailsFragment"
+        tools:layout="@layout/fragment_image_viewer">
+        <argument
+            android:name="selectedPhotoData"
+            app:argType="com.ameen.bosta.domain.model.Photo" />
+    </fragment>
+</navigation>
