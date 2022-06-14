@@ -29,6 +29,10 @@ class UserViewModel @Inject constructor(
         MutableStateFlow(ResultWrapper.Loading)
     val userAlbum = _userAlbums
 
+    init {
+        getUser()
+    }
+
     fun getUser() {
         getUserUseCase.execute().flowOn(Dispatchers.IO).onEach {
             when (it) {
