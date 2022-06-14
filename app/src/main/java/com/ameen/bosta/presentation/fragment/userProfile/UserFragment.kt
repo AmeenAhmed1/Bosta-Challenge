@@ -47,7 +47,7 @@ class UserFragment : Fragment(), AlbumClickListener {
     }
 
     private fun initObservers() {
-        userViewModel.getUser()
+        //userViewModel.getUser()
         lifecycleScope.launchWhenCreated {
             userViewModel.userData.collect {
                 when (it) {
